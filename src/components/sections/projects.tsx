@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Github, ExternalLink } from "lucide-react";
 import { CardSpotlight } from "@/components/ui/card-spotlight";
+import Image from "next/image";
 
 const projects = [
   {
@@ -20,6 +21,7 @@ const projects = [
       "AssemblyAI",
     ],
     url: "https://code-context.vercel.app/",
+    image: "/CodeContext.png",
     featured: true,
   },
   {
@@ -36,6 +38,7 @@ const projects = [
       "Railway",
     ],
     url: "https://twitter-web-scraper.vercel.app/",
+    image: "/Twitter-Scaper.png",
     featured: true,
   },
   {
@@ -52,6 +55,7 @@ const projects = [
       "Docker",
     ],
     url: "https://yap-0glm.onrender.com/",
+    image: "/Yap.png",
     featured: true,
   },
 ];
@@ -121,35 +125,53 @@ export function Projects() {
                 whileHover={{ y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <CardSpotlight className="h-full flex flex-col p-6 hover:border-primary/50 transition-colors duration-300">
-                  <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors flex items-center gap-2">
-                    {project.title}
-                    <ExternalLink className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity translate-y-0.5" />
-                  </h3>
+                <CardSpotlight className="h-full flex flex-col overflow-hidden hover:border-primary/50 transition-colors duration-300">
+                  {/* Project Image */}
+                  <div className="relative w-full h-48 overflow-hidden">
+                    <Image
+                      src={project.image}
+                      alt={`${project.title} preview`}
+                      fill
+                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    />
+                    {/* Overlay with external link - lighter in light mode, stronger in dark mode */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/10 to-transparent opacity-20 group-hover:opacity-40 dark:opacity-60 dark:group-hover:opacity-80 transition-opacity duration-300" />
+                    <div className="absolute top-3 right-3 p-2 rounded-full bg-background/80 backdrop-blur-sm border border-primary/30 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110">
+                      <ExternalLink className="h-4 w-4 text-primary" />
+                    </div>
+                  </div>
 
-                  <p className="text-muted-foreground text-sm mb-6 flex-grow leading-relaxed">
-                    {project.description}
-                  </p>
+                  {/* Card Content */}
+                  <div className="p-6 flex flex-col flex-grow">
+                    <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors flex items-center gap-2">
+                      {project.title}
+                      <ExternalLink className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity translate-y-0.5" />
+                    </h3>
 
-                  <div className="flex flex-wrap gap-2 mt-auto">
-                    {project.technologies.slice(0, 5).map((tech) => (
-                      <span
-                        key={tech}
-                        className={cn(
-                          "px-2.5 py-1 text-xs font-medium rounded-md",
-                          "bg-secondary/50 text-secondary-foreground",
-                          "border border-transparent group-hover:border-primary/20",
-                          "transition-colors duration-300"
-                        )}
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                    {project.technologies.length > 5 && (
-                      <span className="px-2.5 py-1 text-xs font-medium text-muted-foreground">
-                        +{project.technologies.length - 5}
-                      </span>
-                    )}
+                    <p className="text-muted-foreground text-sm mb-6 flex-grow leading-relaxed">
+                      {project.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 mt-auto">
+                      {project.technologies.slice(0, 5).map((tech) => (
+                        <span
+                          key={tech}
+                          className={cn(
+                            "px-2.5 py-1 text-xs font-medium rounded-md",
+                            "bg-secondary/50 text-secondary-foreground",
+                            "border border-transparent group-hover:border-primary/20",
+                            "transition-colors duration-300"
+                          )}
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                      {project.technologies.length > 5 && (
+                        <span className="px-2.5 py-1 text-xs font-medium text-muted-foreground">
+                          +{project.technologies.length - 5}
+                        </span>
+                      )}
+                    </div>
                   </div>
                 </CardSpotlight>
               </motion.a>
