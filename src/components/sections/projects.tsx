@@ -135,7 +135,7 @@ export function Projects() {
                       className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                     />
                     {/* Overlay with external link - lighter in light mode, stronger in dark mode */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/10 to-transparent opacity-20 group-hover:opacity-40 dark:opacity-60 dark:group-hover:opacity-80 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/10 to-transparent opacity-20 group-hover:opacity-25 dark:opacity-60 dark:group-hover:opacity-80 transition-opacity duration-300" />
                     <div className="absolute top-3 right-3 p-2 rounded-full bg-background/80 backdrop-blur-sm border border-primary/30 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110">
                       <ExternalLink className="h-4 w-4 text-primary" />
                     </div>
@@ -178,6 +178,25 @@ export function Projects() {
             </motion.div>
           ))}
         </div>
+
+        {/* Many More Coming Text */}
+        <motion.p
+          className="text-center mt-8 text-muted-foreground/70 text-sm italic"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+        >
+          <span className="inline-flex items-center gap-2">
+            <span>& many more coming soon</span>
+            <motion.span
+              animate={{ x: [0, 3, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              🚀
+            </motion.span>
+          </span>
+        </motion.p>
 
         {/* View More Link */}
         <motion.div
