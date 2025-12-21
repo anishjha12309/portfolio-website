@@ -82,7 +82,7 @@ export function Skills() {
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            <span className="text-primary font-mono text-xl mr-2">04.</span>
+            <span className="text-primary font-mono text-xl mr-2">05.</span>
             Skills & Technologies
             <span className="ml-2 text-primary/40 dark:text-primary/60">✨</span>
           </h2>

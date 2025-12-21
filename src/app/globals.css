@@ -150,3 +150,12 @@ html.lenis, html.lenis body {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
+
+/* Hide scrollbar but keep scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

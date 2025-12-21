@@ -76,7 +76,7 @@ export function Contact() {
           className="text-center mb-12"
         >
           <p className="text-primary font-mono text-sm mb-2">
-            05. What&apos;s Next? <span className="ml-1">🌟</span>
+            06. What&apos;s Next? <span className="ml-1">🌟</span>
           </p>
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
             Get In Touch
